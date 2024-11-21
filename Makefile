@@ -1,12 +1,12 @@
 NAME 			= so_long
 
-CC 				= cc
+CC 				= gcc
 
-CFLAGS 			= -Werror -Wall -Wextra -g
+CFLAGS 			= -Werror -Wall -Wextra 
 
-MLX_PATH		= mlx/
 
-MLX_FLAGS 		= -Lmlx -lmlx -L/usr/X11/lib -lXext -lX11 -framework OpenGL -framework AppKit
+# MLX_FLAGS 		= -L/usr/local/lib -lmlx -I/usr/local/include -framework OpenGL -framework AppKit 
+LIBMLX = -L/path/to/minilibx -lmlx
 
 RM 				= rm -rf
 
@@ -14,14 +14,14 @@ LIBFT_PATH = libft/
 
 LIBFT_LIB = $(LIBFT_PATH)libft.a
 
-SRCS 			= so_long.c
+SRCS 			= so_long.c \
 
-.c.o:
-	$(CC) $(CFLAGS) -c -o $@ $< $(INCLUDES)			
+%.o: %.c
+	$(CC) -Wall -Wextra -Werror -Imlx -c $< -o $@
 
 #for linking the required libraries and frameworks:
-$(NAME): $(OBJS)
-	$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(MLX_FLAGS)
+$(NAME): $(OBJ)
+	$(CC) $(OBJ) -Lmlx -lmlx -framework OpenGL -framework AppKit -o $(NAME)
 
 $(NAME) :
 	make all -C libft
