@@ -6,21 +6,28 @@
 /*   By: mavissar <mavissar@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 15:30:13 by mavissar          #+#    #+#             */
-/*   Updated: 2024/11/21 20:50:39 by mavissar         ###   ########.fr       */
+/*   Updated: 2024/11/29 17:53:57 by mavissar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-#include "mlx/mlx.h"
+#include "mlx.h"
 
-int main(void)
+int main(int argc, char **argv)
 {
-    void    *mlx_ptr;
-    void    *win_ptr;   
+    t_game      game;
 
-    mlx_ptr = mlx_init();
-    win_ptr = mlx_new_window(mlx_ptr, size_x, size_y, "first_window");
-    mlx_destroy_window(mlx_ptr, win_ptr);
-    // mlx_destroy_display(mlx_ptr);
-    free(mlx_ptr);
+    if (argc != 2)
+    {
+        ft_putstr_fd("Error!\nWrong number of arguments\n", 2);
+        return (1);
+    }
+    if (!game_create(&game, argv[1]))
+    {
+        ft_putstr_fd("Error!\nCan't initialize the game :(\n", 2);
+        return (1);
+    }
+    mlx_loop_hook(game.mlx, render_game, &game);
+    mlx_loop(game.mlx);
+    return (0);
 }
