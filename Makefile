@@ -1,43 +1,49 @@
-
+# TARGET
 NAME = so_long
 
+# ARGUMENTS
 CC = gcc
-FLAGS = -Wall -Werror -Wextra -I/usr/local/include
-LIBS = -L/usr/local/lib -lmlx -framework OpenGL -framework AppKit
-#SEG = -fsanitize=address -g
+FLAGS = -Wall -Wextra -Werror
+MLX = -lmlx -framework OpenGL -framework AppKit
 
+# SO_LONG FILES
 SRC_PATH = ./srcs/
-GNL_PATH = ./get_next_line/
-LBFT_PATH = ./libft/
-OBJ_DIR = ./obj/
+SRCS = so_long \
+		map \
+		checkers \
+		image \
+C_FILES = $(addprefix $(SRC_PATH), $(SRC:=.c))
+OBJ = $(C_FILES:.c=.o)
 
-SRC =   so_long
+# LIBFT
+LIBFT_PATH = ./functions/
+LIBFT_SRCS = ft_putstr_fd \
+            get_next_line \
+            get_next_line_utils
+LBFT_FILES = $(addprefix $(LIBFT_PATH), $(LIBFT_SRCS:=.c))
+LBFT_OBJ = $(LBFT_FILES:.c=.o)
 
-C_FILES = $(addprefix $(SRC_PATH), $(SRC:=.c)) $(addprefix $(LBFT_PATH), $(LBFT:=.c)) $(addprefix $(GNL_PATH), $(GNL:=.c))
-OBJ = $(addprefix $(OBJ_DIR), $(SRC:=.o)) $(addprefix $(OBJ_DIR), $(LBFT:=.o)) $(addprefix $(OBJ_DIR), $(GNL:=.o))
+# INCLUDES
+INC_PATH = ./includes/
+INCLUDES = -I$(INC_PATH) -I$(LIBFT_PATH)
 
-all: $(OBJ_DIR) $(NAME)
+# RULES
+all: $(NAME)
 
-$(NAME): $(OBJ)
-    @$(CC) $(FLAGS) -o $(NAME) $(OBJ) $(LIBS)
+$(NAME): $(OBJ) $(LBFT_OBJ)
+	@$(CC) $(FLAGS) $(OBJ) $(LBFT_OBJ) $(MLX) -o $(NAME)
+	@echo "Compilation terminée : $(NAME)"
 
-$(OBJ_DIR)%.o: $(GNL_PATH)%.c | $(OBJ_DIR)
-    @$(CC) $(FLAGS) -c $< -o $@
-
-$(OBJ_DIR)%.o: $(SRC_PATH)%.c | $(OBJ_DIR)
-    @$(CC) $(FLAGS) -c $< -o $@
-
-$(OBJ_DIR)%.o: $(LBFT_PATH)%.c | $(OBJ_DIR)
-    @$(CC) $(FLAGS) -c $< -o $@
-
-$(OBJ_DIR):
-    @mkdir -p $(OBJ_DIR)
+%.o: %.c
+	@$(CC) $(FLAGS) $(INCLUDES) -c $< -o $@
 
 clean:
-    @rm -rf $(OBJ_DIR)
+	@rm -f $(OBJ) $(LBFT_OBJ)
+	@echo "Fichiers objets supprimés."
 
 fclean: clean
-    @rm -f $(NAME)
+	@rm -f $(NAME)
+	@echo "Exécutable supprimé."
 
 re: fclean all
 
