@@ -6,7 +6,7 @@
 /*   By: mavissar <mavissar@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 16:09:15 by mavissar          #+#    #+#             */
-/*   Updated: 2024/12/01 18:47:08 by mavissar         ###   ########.fr       */
+/*   Updated: 2024/12/02 10:22:35 by mavissar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,14 +38,14 @@ typedef struct s_img_str
                                 /*SPRITES ON MAP*/
 typedef struct s_map_content
 {
-    void    *wall_s; //sprite wall
-    void    *exit_s;
-    void    *space_s;
-    void    *player_s;
-    void    *collect_s; 
-    void    *counted_p;
-    void    *counted_c;
-    void    *counted_e;
+    char    wall_s; //sprite wall
+    char    exit_s;
+    char    space_s;
+    char    player_s;
+    char    collect_s; 
+    int	   counted_p;
+    int    counted_c;
+    int    counted_e;
     }           t_map_content;
                                 /*GAME CORE DATA*/
 typedef struct pos_s
@@ -77,6 +77,6 @@ int		lines_checker(char *line, char wall);
 int		format_checker(char **map);
 int     column_checker(char *line, char wall, t_game *game);
 int     good_behavior_checker(char *line, t_map_content *x);
-
+void    *free_map(t_game *game);
 
 #endif

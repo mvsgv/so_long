@@ -6,11 +6,11 @@
 /*   By: mavissar <mavissar@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 13:34:25 by mavissar          #+#    #+#             */
-/*   Updated: 2024/12/01 15:20:02 by mavissar         ###   ########.fr       */
+/*   Updated: 2024/12/02 08:26:51 by mavissar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "functions.h"
 
 static void	ft_free(char **arr)
 {

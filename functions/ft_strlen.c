@@ -1,36 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strrchr.c                                       :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mavissar <mavissar@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/11 18:05:10 by mavissar          #+#    #+#             */
-/*   Updated: 2024/12/01 15:05:10 by mavissar         ###   ########.fr       */
+/*   Created: 2024/04/09 13:29:50 by mavissar          #+#    #+#             */
+/*   Updated: 2024/12/02 08:31:43 by mavissar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "functions.h"
 
-char	*ft_strrchr(char *s, int c)
+int	ft_strlen(char *str)
 {
-	size_t	i;
+	int	i;
 
-	i = ft_strlen(s);
-	while (i > 0)
-	{
-		if (s[i] == (char) c)
-			return ((char *) s + i);
-		i--;
-	}
-	if (s[i] == (char) c)
-		return ((char *) s + i);
-	return (NULL);
+	i = 0;
+	while (str[i])
+		i++;
+	return (i);
 }
-/*int		main()
-{
-	char	s[] = "ouf that was cold";
-	int	c = 'w'; 
-	printf("%s", ft_strrchr(s, c));
-	printf("%s", strrchr(s, c));
-}*/

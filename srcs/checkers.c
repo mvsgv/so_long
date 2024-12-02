@@ -6,7 +6,7 @@
 /*   By: mavissar <mavissar@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/01 16:10:52 by mavissar          #+#    #+#             */
-/*   Updated: 2024/12/01 18:47:04 by mavissar         ###   ########.fr       */
+/*   Updated: 2024/12/02 08:56:55 by mavissar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,14 +110,14 @@ int     good_behavior_checker(char *line, t_map_content *x)
     {
         if (x->exit_s > 1 || x->player_s > 1)
             {
-                ft_error("Error\nWrong nb of P or E\n");
+                perror("Error\nWrong nb of P or E\n");
                 return (0);
             }
         if (line[i] != x->wall_s && line[i] != x->collect_s 
             && line[i] != x->exit_s && line[i] != x->player_s
             && line[i] != x->space_s)
         {
-            ft_error("Error\nWrong digit in the map\n");
+            perror("Error\nWrong digit in the map\n");
             return (0);
         }
         i++;
