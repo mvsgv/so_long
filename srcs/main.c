@@ -6,7 +6,7 @@
 /*   By: mavissar <mavissar@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 15:30:13 by mavissar          #+#    #+#             */
-/*   Updated: 2024/12/02 17:04:16 by mavissar         ###   ########.fr       */
+/*   Updated: 2024/12/02 22:55:51 by mavissar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int main(int argc, char **argv)
     if (argc != 2)
     {
         ft_putstr_fd("Error!\nWrong number of arguments\n", 2);
-        return (1);
+        return (0);
     }
     else
     {
@@ -32,8 +32,7 @@ int main(int argc, char **argv)
                 img_setup(&game);
                 render_first(&game);             
             }
-             
-             //   ft_close(&game);
+               ending(&game);
     }
     return (1);
 }

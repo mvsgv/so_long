@@ -14,7 +14,8 @@ SRCS = main \
 		image \
 		create \
 		ending \
-		moving
+		moving \
+		utils
 C_FILES = $(addprefix $(SRC_PATH), $(SRCS:=.c))
 OBJ = $(addprefix $(SRC_PATH), $(SRCS:=.o))
 

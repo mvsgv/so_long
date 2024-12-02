@@ -6,7 +6,7 @@
 /*   By: mavissar <mavissar@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 16:09:15 by mavissar          #+#    #+#             */
-/*   Updated: 2024/12/02 18:58:48 by mavissar         ###   ########.fr       */
+/*   Updated: 2024/12/02 22:48:17 by mavissar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,8 +98,12 @@ void    rest_render(t_game *game);
 int     ending(t_game *game);
 int     collected(t_game *game);
 
-void    move_up(t_game *game, t_pos x, t_pos y);
-void    move_down(t_game *game, t_pos x, t_pos y);
-void    move_right(t_game *game, t_pos x, t_pos y);
-void    move_left(t_game *game, t_pos x, t_pos y);
+void    move_up(t_game *game);
+void    move_down(t_game *game);
+void    move_right(t_game *game);
+void    move_left(t_game *game);
+int     touch(int x, t_game *game);
+int     ending(t_game *game);
+void    print(t_game *game, void *img, int x, int y);
+
 #endif

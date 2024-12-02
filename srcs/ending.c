@@ -6,7 +6,7 @@
 /*   By: mavissar <mavissar@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 17:41:35 by mavissar          #+#    #+#             */
-/*   Updated: 2024/12/02 18:59:11 by mavissar         ###   ########.fr       */
+/*   Updated: 2024/12/02 22:45:47 by mavissar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,9 +49,9 @@ int     ending(t_game *game)
         mlx_destroy_image(game->mlx_ptr, game->img.img_exit);
         mlx_destroy_image(game->mlx_ptr, game->img.img_floor);
         mlx_destroy_image(game->mlx_ptr, game->img.img_player);
-        mlx_destroy_image(game->mlx_ptr, game->img.img_wall);
+        mlx_destroy_window(game->mlx_ptr, game->img.img_wall);
     }
-    mlx_destroy_display(game->mlx_ptr);
+    // mlx_destroy_window(game->mlx_ptr);
     free(game->mlx_ptr);
     exit(0);
 }
@@ -61,14 +61,12 @@ int     touch(int x, t_game *game)
     if (x == KEY_ESCAPE)
         ending(game);
     if (x == KEY_W || x == KEY_UP)
-        move_up(game, game->pos.x, game->pos.y);
+        move_up(game);
     if (x == KEY_A || x == KEY_LEFT)
-        move_left(game, game->pos.x, game->pos.y);
+        move_left(game);
     if (x == KEY_D || x == KEY_RIGHT)
-        move_right(game, game->pos.x, game->pos.y);
+        move_right(game);
     if (x == KEY_S || x == KEY_DOWN)
-        move_down(game, game->pos.x, game->pos.y);
+        move_down(game);
     return (0);
 }
-
-(game, game->map.player.y, game->map.player.x + 1, RIGHT);

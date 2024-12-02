@@ -6,7 +6,7 @@
 /*   By: mavissar <mavissar@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 13:54:21 by mavissar          #+#    #+#             */
-/*   Updated: 2024/12/02 17:30:48 by mavissar         ###   ########.fr       */
+/*   Updated: 2024/12/02 22:48:14 by mavissar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@ void    render_first(t_game *game)
         return ;
     }
     mlx_loop_hook(game->mlx_ptr, &render, game);
-    mlx_hook(game->mlx_win, KeyRelease, KeyReleaseMask, &key_press, data);
+    mlx_hook(game->mlx_win, 2, 0, &touch, game);
+    mlx_hook(game->mlx_ptr, 17, 0, &ending, game);
 }
 
 void    render_second(t_game *game)
@@ -69,7 +70,7 @@ void    back_render(t_game *game)
     i = 0;
     while (game->map[i] != NULL)
     {
-        while (game->map[i][j] != NULL)
+        while (game->map[i][j])
         {
             if (game->map[i][j] == game->content.wall_s)
                 print(game, game->img.img_wall, i , j);
@@ -90,14 +91,14 @@ void    rest_render(t_game *game)
     x = 0;
     while (game->map[x] != NULL)
     {
-        while(game->map[x][y] != NULL)
+        while(game->map[x][y])
         {
             if (game->map[x][y] == game->content.collect_s)
                 print(game, game->img.img_collect, x, y);
             if (game->map[x][y] == game->content.player_s)
             {
                 game->pos.x = x * game->img.width;
-                game->pos.y = x * game->img.height;
+                game->pos.y = y * game->img.height;
                 print(game, game->img.img_player, x, y);   
             }
             if (game->map[x][y] == game->content.exit_s)
