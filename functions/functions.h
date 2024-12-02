@@ -6,7 +6,7 @@
 /*   By: mavissar <mavissar@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/30 10:49:26 by mavissar          #+#    #+#             */
-/*   Updated: 2024/12/02 10:28:48 by mavissar         ###   ########.fr       */
+/*   Updated: 2024/12/02 11:01:34 by mavissar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ char	*ft_strjoin(char *s1, char *s2);
 char	*ft_strdup(char *str);
 char	*ft_substr(char *s, int start, int len);
 int	    get_next_line(int fd, char **str);
-char	*ft_strchr(char *s, char *c);
+int     ft_strchr(char *s, char *c);
 char	**ft_split(char *s, char c);
 char	*ft_strch(char *string);
 

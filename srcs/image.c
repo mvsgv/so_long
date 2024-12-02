@@ -6,7 +6,7 @@
 /*   By: mavissar <mavissar@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/01 12:52:52 by mavissar          #+#    #+#             */
-/*   Updated: 2024/12/02 08:57:19 by mavissar         ###   ########.fr       */
+/*   Updated: 2024/12/02 11:47:33 by mavissar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@ void    link_content(t_map_content *content)
     content->wall_s = '1';
     content->player_s = 'P';
     content->space_s = '0';
-    content->counted_p = '0';
-    content->counted_e = '0';
-    content->counted_c = '0';
+    content->counted_p = 0;
+    content->counted_e = 0;
+    content->counted_c = 0;
 }
 void    img_setup(t_game *game)
 {
@@ -40,6 +40,6 @@ void    img_setup(t_game *game)
                         &(game->img.height), &(game->img.width));
     game->img.img_player = mlx_xpm_file_to_image(game->mlx_ptr, 
                 game->img.player, &(game->img.height), &(game->img.width));
-    game->img.img_wall - mlx_xpm_file_to_image(game->mlx_ptr,
+    game->img.img_wall = mlx_xpm_file_to_image(game->mlx_ptr,
                     game->img.wall, &(game->img.height), &(game->img.width));
 }

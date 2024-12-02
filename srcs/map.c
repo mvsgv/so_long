@@ -6,7 +6,7 @@
 /*   By: mavissar <mavissar@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/01 13:23:10 by mavissar          #+#    #+#             */
-/*   Updated: 2024/12/02 10:29:37 by mavissar         ###   ########.fr       */
+/*   Updated: 2024/12/02 17:03:18 by mavissar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,15 +28,16 @@ char    *get_map(int fd)
         while (count > 0)
         {
             buff = ft_strjoin(buff, line);
-            free(tmp);
-            free(line);
+            tmp = buff;
+            buff = ft_strjoin(buff, "\n");
             line = ft_strdup("");
             count = get_next_line(fd, &line);
-            tmp = buff;
+            free(tmp);
+            free(line);
         }
         return (buff);
     }
-    perror("Error\nWrong map lecture\n");
+    ft_error("Error\nWrong map lecture\n");
     return (NULL);
 }
 char    **parsing(int fd, t_game *game)
@@ -71,22 +72,19 @@ char    **map_init(char **argv, t_game *game)
     fd = 0;
     game->map = NULL;
     if (ft_strchr(argv[1], ".ber") == 0)
-    {
-            perror("Error\nCorrect map not founded\n");
-            return (0);
-    }
+        return (ft_error("Error\nNo correct format map founded\n"));
     else
     {
         fd = open(argv[1], O_RDONLY);
         if (fd > 0)
             game->map = parsing(fd, game);
         else
-            (perror("Error\nCan't open the file\n"));
+            return (ft_error("Error\nCan't open the file\n"));
         if ((game->content.counted_c == 0 || game->content.counted_e != 1
             || game->content.counted_p != 1) && game->map != NULL)
         {
             free_map(game);
-            perror("Error\nWrong nb of P,E or C\n");
+            return (ft_error("Error\nWrong nb of P,E or C\n"));
         }
     }
     return (game->map);
@@ -104,4 +102,10 @@ void    *free_map(t_game *game)
     free(game->map);
     game->map = NULL;
     return (0);
+}
+
+void	*ft_error(char *str)
+{
+	write(2, str, ft_strlen(str));
+	return (0);
 }

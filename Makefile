@@ -11,7 +11,10 @@ SRC_PATH = ./srcs/
 SRCS = main \
 		map \
 		checkers \
-		image 
+		image \
+		create \
+		ending \
+		moving
 C_FILES = $(addprefix $(SRC_PATH), $(SRCS:=.c))
 OBJ = $(addprefix $(SRC_PATH), $(SRCS:=.o))
 
@@ -19,7 +22,6 @@ OBJ = $(addprefix $(SRC_PATH), $(SRCS:=.o))
 LIBFT_PATH = ./functions/
 LIBFT_SRCS = ft_putstr_fd \
             get_next_line \
-            get_next_line_utils \
 			ft_split \
 			ft_strchr \
 			ft_strjoin \
