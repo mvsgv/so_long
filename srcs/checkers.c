@@ -6,7 +6,7 @@
 /*   By: mavissar <mavissar@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/01 16:10:52 by mavissar          #+#    #+#             */
-/*   Updated: 2024/12/02 16:56:30 by mavissar         ###   ########.fr       */
+/*   Updated: 2024/12/04 19:11:28 by mavissar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,8 +98,9 @@ int format_checker(char **map)
 
 int lines_checker(char *line, char wall)
 {
-    int i = 0;
-
+    int i;
+    
+    i = 0;
     while (line[i])
     {
         if (line[i] != wall)

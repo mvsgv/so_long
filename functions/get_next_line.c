@@ -6,7 +6,7 @@
 /*   By: mavissar <mavissar@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 15:48:19 by mavissar          #+#    #+#             */
-/*   Updated: 2024/12/02 10:28:29 by mavissar         ###   ########.fr       */
+/*   Updated: 2024/12/04 18:43:21 by mavissar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@ static char	*ft_stradd(char *str, char buff)
 
 	i = 0;
 	ret = (char *)malloc(sizeof(char) * (ft_strlen(str) + 2));
-	if (ret == NULL)
+	if (!ret)
 		return (NULL);
-	while (str[i])
+	while (str && str[i])
 	{
 		ret[i] = str[i];
 		i++;

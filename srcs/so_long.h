@@ -6,7 +6,7 @@
 /*   By: mavissar <mavissar@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 16:09:15 by mavissar          #+#    #+#             */
-/*   Updated: 2024/12/02 22:48:17 by mavissar         ###   ########.fr       */
+/*   Updated: 2024/12/04 19:04:26 by mavissar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ typedef struct s_map_content
     int    counted_c;
     int    counted_e;
     }           t_map_content;
-                                /*GAME CORE DATA*/
+                                /*GAME CORE game*/
 typedef struct pos_s
 {
 	int		x;
@@ -105,5 +105,6 @@ void    move_left(t_game *game);
 int     touch(int x, t_game *game);
 int     ending(t_game *game);
 void    print(t_game *game, void *img, int x, int y);
+int		count_lines(char *file, t_game *game);
 
 #endif
