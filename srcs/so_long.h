@@ -6,7 +6,7 @@
 /*   By: mavissar <mavissar@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 16:09:15 by mavissar          #+#    #+#             */
-/*   Updated: 2024/12/06 16:26:11 by mavissar         ###   ########.fr       */
+/*   Updated: 2024/12/06 19:13:51 by mavissar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,12 +81,13 @@ int     load_map(t_game *game, char *map_file);
 void    link_content(t_map_content *content);
 void    img_setup(t_game *game);
 char    **map_init(char **argv, t_game *game);
-char    **get_map(int fd, t_game *game);
+//char    **get_map(int fd);
+int		find_wall(t_game *game);
 void	content_checker(t_game *game);
-int		lines_checker(char *line, char wall);
-int		format_checker(char **map);
+int		lines_checker(char *line, char wall, t_game *game);
+int		format_checker(t_game *game);
 int     column_checker(char *line, char wall, t_game *game);
-int     good_behavior_checker(char *line, t_map_content *x);
+int     good_behavior_checker(t_game *game);
 void    *free_map(t_game *game);
 void	*ft_error(char *str);
 void    print(t_game *game, void *img, int x, int y);
@@ -106,5 +107,6 @@ int     touch(int x, t_game *game);
 int     ending(t_game *game);
 void    print(t_game *game, void *img, int x, int y);
 int		count_lines(char *file, t_game *game);
+int	find_wall(t_game *game);
 
 #endif

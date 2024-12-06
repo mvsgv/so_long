@@ -15,7 +15,8 @@ SRCS = main \
 		create \
 		ending \
 		moving \
-		utils
+		utils \
+		find_wall
 C_FILES = $(addprefix $(SRC_PATH), $(SRCS:=.c))
 OBJ = $(addprefix $(SRC_PATH), $(SRCS:=.o))
 
