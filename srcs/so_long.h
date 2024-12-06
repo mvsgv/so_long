@@ -6,7 +6,7 @@
 /*   By: mavissar <mavissar@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 16:09:15 by mavissar          #+#    #+#             */
-/*   Updated: 2024/12/04 19:04:26 by mavissar         ###   ########.fr       */
+/*   Updated: 2024/12/06 14:49:11 by mavissar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ int     load_map(t_game *game, char *map_file);
 void    link_content(t_map_content *content);
 void    img_setup(t_game *game);
 char    **map_init(char **argv, t_game *game);
-char    *get_map(int fd);
+char    **get_map(int fd);
 void	content_checker(t_game *game);
 int		lines_checker(char *line, char wall);
 int		format_checker(char **map);

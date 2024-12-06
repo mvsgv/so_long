@@ -24,10 +24,9 @@ LIBFT_PATH = ./functions/
 LIBFT_SRCS = ft_putstr_fd \
             get_next_line \
 			ft_split \
-			ft_strchr \
-			ft_strjoin \
-			ft_strdup \
-			ft_strlen 
+			get_next_line_utils \
+			ft_strlen \
+			ft_strncmp
 LIBFT_FILES = $(addprefix $(LIBFT_PATH), $(LIBFT_SRCS:=.c))
 LIBFT_OBJ = $(addprefix $(LIBFT_PATH), $(LIBFT_SRCS:=.o))
 

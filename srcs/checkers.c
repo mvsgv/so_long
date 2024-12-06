@@ -6,7 +6,7 @@
 /*   By: mavissar <mavissar@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/01 16:10:52 by mavissar          #+#    #+#             */
-/*   Updated: 2024/12/04 19:11:28 by mavissar         ###   ########.fr       */
+/*   Updated: 2024/12/05 13:43:44 by mavissar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,7 @@ int lines_checker(char *line, char wall)
     int i;
     
     i = 0;
-    while (line[i])
+    while (line[i] != '\0')
     {
         if (line[i] != wall)
         {
@@ -145,10 +145,10 @@ int     good_behavior_checker(char *line, t_map_content *x)
         if (line[i] != x->wall_s && line[i] != x->collect_s 
             && line[i] != x->exit_s && line[i] != x->player_s
             && line[i] != x->space_s)
-        {
-            ft_error("Error\nWrong digit in the map\n");
-            return (0);
-        }
+            {
+                ft_error("Error\nWrong digit in the map\n");
+                return (0);
+            }
         i++;
     }
     return (1);
