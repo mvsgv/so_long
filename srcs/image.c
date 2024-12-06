@@ -6,7 +6,7 @@
 /*   By: mavissar <mavissar@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/01 12:52:52 by mavissar          #+#    #+#             */
-/*   Updated: 2024/12/04 19:05:05 by mavissar         ###   ########.fr       */
+/*   Updated: 2024/12/06 18:27:59 by mavissar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ void    link_content(t_map_content *content)
 }
 void    img_setup(t_game *game)
 {
-    game->img.height = 80;
-    game->img.width = 80;
+    game->img.height = 64;
+    game->img.width = 64;
     game->img.floor = "./xpm/background.xpm";
     game->img.collect = "./xpm/collectible.xpm";
     game->img.exit = "./xpm/exit.xpm";

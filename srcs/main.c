@@ -6,7 +6,7 @@
 /*   By: mavissar <mavissar@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 15:30:13 by mavissar          #+#    #+#             */
-/*   Updated: 2024/12/03 18:04:41 by mavissar         ###   ########.fr       */
+/*   Updated: 2024/12/06 18:37:08 by mavissar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,10 @@ int main(int argc, char **argv)
             if (!game.map)
             {
                 img_setup(&game);
-              //  render_first(&game);             
+               render_first(&game);             
             }
-            //else
-            // ending(&game);
+            else
+                ending(&game);
     }
     return (1);
 }

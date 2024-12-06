@@ -6,110 +6,57 @@
 /*   By: mavissar <mavissar@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/01 13:23:10 by mavissar          #+#    #+#             */
-/*   Updated: 2024/12/06 15:45:55 by mavissar         ###   ########.fr       */
+/*   Updated: 2024/12/06 18:53:15 by mavissar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-	// 1 loop qui utilise gnl + un int qui va tenir le compte
-	//	-> nb de lignes
-	// 1 loop sur la derniere ligne que renvoie gnl + un int qui tient le copte
-	// 		--> nb de char / lignes
-	
-	// les malloc
 
-	// la copie de la map dans char**
-
-char	**get_map(int fd)
+static void	while_loop(int fd)
 {
-	char	**map;
-	int		i;
 	char	*line;
-	int		nb_lines;
-	int		nbr_char;
 	int		j;
 	
 	j = 0;
-	map = NULL;
-	i = 0;
-	nbr_char = 0;
-	nb_lines = 0;
-	if ( fd < 0)
-		ft_error("Error\nCan't open file");
-	while((line = get_next_line(fd)) != NULL)
-		nb_lines++;
-	i = malloc(sizeof(char) * (nb_lines));
-	if (!map)
-		ft_error("Erro\nMemory allocation failed\n");
-	while ((line = get_next_line(fd)) != NULL)
+	while (1)
 	{
-		while(line[nbr_char])
-			nbr_char++;
-		j = malloc(sizeof(char) * (nbr_char + 1));
-		if (!map[j])
-			ft_error("Error\nMemory allocation failed");
-		while (i < nbr_char)
-		{
-			map[i][j] = line[j];
-			j++;
-		}
-		map[j][i] = '\0';
-		free(line);
-		j++;
+    	line = get_next_line(fd);
+    	if (!line)
+        	break;
+    	free(line);
+    	j++;
 	}
-	return (map);
 }
 
-// char **lines;
-// lines = malloc(nb_lines);
-
-// j = 0
-// while (j < nb_lines) {
-// 	lines[j] = malloc(i);
-// }
-
-
-
-// 	char **map;
-
-// 	// 1 loop avec gnl pour avoir nb de ligne et nb de char/ligne
-
-// 	// 2 malloc du nombre de ligne sur map
-// 	// 3 malloc(nb de char) sur chaque map[i]
-
-// 	// 4 meme loop que dans 1 avec gnl, mais pour copier ce que gnl recupere 
-// 	return map;
+char	**get_map(int fd, t_game *game)
+{
+	int		i;
+	char	*line;
+	int		nb_lines;
+	int		j;
 	
-// }
+	i = 0;
+	j = 0;
+	nb_lines = 0;
+	if (fd < 0)
+		ft_error("Error\nCan't open the file");
+	while_loop(fd);
+	free(line);
+	game->map = (char **)malloc(sizeof(char *) * j);
+	if (!game->map)
+		ft_error("Error\nMempry alocation failed\n");
+	lseek(fd, 0, SEEK_SET);
+	while(1)
+	{
+		line = get_next_line(fd);
+    	if (!line)
+        	break;
+    	game->map = &line;
+		j++;
+	}
+	exit(0);
+}
 
-// char	*get_map(int fd)
-// {
-// 	char	*line_map;
-// 	char	*buff;
-// 	int		char_count;
-// 	char	*tmp_buff;
-
-// 	line_map = ft_strdup("");
-// 	buff = ft_strdup("");
-// 	char_count = get_next_line(fd);
-// 	if (char_count > 0)
-// 	{
-// 		tmp_buff = buff;
-// 		while (char_count > 0)
-// 		{
-// 			buff = ft_strjoin(buff, line_map);
-// 			free(tmp_buff);
-// 			free(line_map);
-// 			line_map = ft_strdup("");
-// 			char_count = get_next_line(fd);
-// 			tmp_buff = buff;
-// 			//printf("begining : %s", tmp_buff);
-// 		}
-// 		return (buff);
-// 	}
-// 	ft_error("Error\nWrong lecture map\n");
-// 	return (NULL);
-// }
 
 void	*free_map(t_game *game)
 {
@@ -132,7 +79,7 @@ char	**parsing(int fd, t_game *game)
 	int		i;
 
 	i = 1;
-	game->map = get_map(fd);
+	game->map = get_map(fd, game->map);
 	content_checker(game);
 	if (!(format_checker(game->map)))
 		return (free_map(game));

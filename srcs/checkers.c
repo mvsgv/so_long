@@ -6,7 +6,7 @@
 /*   By: mavissar <mavissar@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/01 16:10:52 by mavissar          #+#    #+#             */
-/*   Updated: 2024/12/05 13:43:44 by mavissar         ###   ########.fr       */
+/*   Updated: 2024/12/06 16:00:54 by mavissar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,33 +18,6 @@
 /*COLUMN_CHECKER ->Vérifie que chaque col est fermée par des murs*/
 #include "so_long.h"
 
-// void    content_checker(t_game *game)
-// {
-//     int     i;
-//     int     j;
-
-//     i = 0;
-//     j = 0;
-//     // printf("before loop, exit : %d\n", game->content.exit_s);
-//     while (game->map[i])
-//     {
-//         // printf("In loop\n");
-//         while (game->map[i][j])
-//         {
-//             // printf("In loop2\n");
-//             if (game->map[i][j] == game->content.collect_s)
-//                 game->content.counted_c += 1;
-//             if (game->map[i][j] == game->content.player_s)
-//                 game->content.counted_p += 1;
-//             if (game->map[i][j] == game->content.exit_s)
-//                 game->content.counted_e += 1;
-//             j++;
-//         }
-//         j = 0;
-//         i++;
-//     }
-//     // printf("after loop, exit : %d\n", game->content.exit_s);
-// }
 void content_checker(t_game *game)
 {
     int i;
@@ -72,7 +45,6 @@ void content_checker(t_game *game)
         ft_error("Error\nWrong number of P, E, or C\n");
 }
 
-
 int format_checker(char **map)
 {
     int row_length;
@@ -94,7 +66,6 @@ int format_checker(char **map)
     }
     return (1);
 }
-
 
 int lines_checker(char *line, char wall)
 {
