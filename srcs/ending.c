@@ -6,7 +6,7 @@
 /*   By: mavissar <mavissar@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 17:41:35 by mavissar          #+#    #+#             */
-/*   Updated: 2024/12/06 19:14:37 by mavissar         ###   ########.fr       */
+/*   Updated: 2024/12/06 19:45:23 by mavissar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,9 +52,9 @@ int     ending(t_game *game)
         mlx_destroy_image(game->mlx_ptr, game->img.img_exit);
         mlx_destroy_image(game->mlx_ptr, game->img.img_floor);
         mlx_destroy_image(game->mlx_ptr, game->img.img_player);
-        mlx_destroy_window(game->mlx_ptr, game->img.img_wall);
+        mlx_destroy_image(game->mlx_ptr, game->img.img_wall);
     }
-    mlx_destroy_window(game->mlx_win, game->mlx_ptr);
+    mlx_destroy_window(game->mlx_ptr, game->mlx_win);
     free(game->mlx_ptr);
     exit(0);
 }

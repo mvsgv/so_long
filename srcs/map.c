@@ -225,6 +225,7 @@ void	get_map(int fd, t_game *game)
 		//free(line);
 		j++;
 	}
+	
 	j = 0;
 	//free(line);
 	//printf("%s", game->map[1]);
@@ -334,6 +335,7 @@ char	**parsing(int fd, t_game *game)
 	// 
 	//printf("ici %d", game->height);
 	//printf("ici %d", game->width);
+
 	if (!good_behavior_checker(game))
 		errooor(game, "Arg intru");
 	if (!find_wall(game))

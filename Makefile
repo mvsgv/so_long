@@ -3,7 +3,7 @@ NAME = so_long
 
 # ARGUMENTS
 CC = cc
-FLAGS = -Wall -Wextra -Werror -g -fsanitize=address
+FLAGS = -Wall -Wextra -Werror -g
 MLX = -lmlx -framework OpenGL -framework AppKit
 
 # SO_LONG FILES

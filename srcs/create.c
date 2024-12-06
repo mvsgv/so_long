@@ -134,9 +134,11 @@ void    render_first(t_game *game)
         free(game->mlx_ptr);
         return ;
     }
-    mlx_loop_hook(game->mlx_ptr, &render, game);
+
     mlx_hook(game->mlx_win, 2, 0, &touch, game);
-    mlx_hook(game->mlx_ptr, 17, 0, &ending, game);
+    mlx_loop_hook(game->mlx_ptr, &render, game);
+    write(1, "dwq", 3);
+    //mlx_hook(game->mlx_ptr, 17, 0, &ending, game);
 }
 
 void    render_second(t_game *game)
@@ -182,16 +184,18 @@ void    back_render(t_game *game)
     i = 0;
     while (game->map[i] != NULL)
     {
+        // if (i == game->height - 1)
+        //     break;
+        j= 0;
         while (game->map[i][j])
         {
             if (game->map[i][j] == game->content.wall_s)
                 print(game, game->img.img_wall, i , j);
             if (game->map[i][j] == game->content.space_s)
                 print(game, game->img.img_floor, i , j);
-        j++;
+            j++;
         }
-    j = 0;
-    i++;
+        i++;
     }
 }
 

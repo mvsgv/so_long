@@ -6,7 +6,7 @@
 /*   By: mavissar <mavissar@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 16:09:15 by mavissar          #+#    #+#             */
-/*   Updated: 2024/12/06 19:13:51 by mavissar         ###   ########.fr       */
+/*   Updated: 2024/12/06 19:45:11 by mavissar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,6 @@ void    move_down(t_game *game);
 void    move_right(t_game *game);
 void    move_left(t_game *game);
 int     touch(int x, t_game *game);
-int     ending(t_game *game);
 void    print(t_game *game, void *img, int x, int y);
 int		count_lines(char *file, t_game *game);
 int	find_wall(t_game *game);
