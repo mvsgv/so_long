@@ -6,7 +6,7 @@
 /*   By: mavissar <mavissar@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/01 13:23:10 by mavissar          #+#    #+#             */
-/*   Updated: 2024/12/06 15:33:21 by mavissar         ###   ########.fr       */
+/*   Updated: 2024/12/06 15:45:21 by mavissar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ char	**get_map(int fd)
 	int		j;
 	
 	j = 0;
+	map = NULL;
 	i = 0;
 	nbr_char = 0;
 	nb_lines = 0;
@@ -37,7 +38,7 @@ char	**get_map(int fd)
 		ft_error("Error\nCan't open file");
 	while((line = get_next_line(fd)) != NULL)
 		nb_lines++;
-	map = malloc(sizeof(char) * (nb_lines));
+	map[i] = malloc(sizeof(char) * (nb_lines));
 	if (!map)
 		ft_error("Erro\nMemory allocation failed\n");
 	while ((line = get_next_line(fd)) != NULL)
@@ -49,8 +50,8 @@ char	**get_map(int fd)
 			ft_error("Error\nMemory allocation failed");
 		while (i < nbr_char)
 		{
-			map[j][i] = line[i];
-			i++;
+			map[i][j] = line[j];
+			j++;
 		}
 		map[j][i] = '\0';
 		free(line);
