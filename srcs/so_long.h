@@ -6,7 +6,7 @@
 /*   By: mavissar <mavissar@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 16:09:15 by mavissar          #+#    #+#             */
-/*   Updated: 2024/12/06 19:45:11 by mavissar         ###   ########.fr       */
+/*   Updated: 2024/12/07 16:25:08 by mavissar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,11 +77,9 @@ typedef struct s_game
 	int	        	count;
 }				t_game;
 
-int     load_map(t_game *game, char *map_file);
 void    link_content(t_map_content *content);
 void    img_setup(t_game *game);
 char    **map_init(char **argv, t_game *game);
-//char    **get_map(int fd);
 int		find_wall(t_game *game);
 void	content_checker(t_game *game);
 int		lines_checker(char *line, char wall, t_game *game);
@@ -90,12 +88,12 @@ int     column_checker(char *line, char wall, t_game *game);
 int     good_behavior_checker(t_game *game);
 void    *free_map(t_game *game);
 void	*ft_error(char *str);
-void    print(t_game *game, void *img, int x, int y);
-int   	render(t_game *game);
-void    render_second(t_game *game);
+// int   	render(t_game *game);
+int render(void *param);
+// void    render_second(t_game *game);
 void    render_first(t_game *game);
-void    back_render(t_game *game);
-void    rest_render(t_game *game);
+// void    back_render(t_game *game);
+// void    rest_render(t_game *game);
 int     ending(t_game *game);
 int     collected(t_game *game);
 
@@ -104,7 +102,7 @@ void    move_down(t_game *game);
 void    move_right(t_game *game);
 void    move_left(t_game *game);
 int     touch(int x, t_game *game);
-void    print(t_game *game, void *img, int x, int y);
+void    print(t_game *game);
 int		count_lines(char *file, t_game *game);
 int	find_wall(t_game *game);
 

@@ -6,10 +6,11 @@
 /*   By: mavissar <mavissar@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 15:48:19 by mavissar          #+#    #+#             */
-/*   Updated: 2024/12/05 14:45:11 by mavissar         ###   ########.fr       */
+/*   Updated: 2024/12/07 13:39:30 by mavissar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdio.h>
 #include "functions.h"
 
 static char	*ft_free_and_return(char **str, int to_free)
@@ -25,6 +26,8 @@ char	*get_next_line(int fd)
 	char		*line;
 	char		*buff;
 	static char	*keep;
+
+	// printf("IN GNL\n");
 
 	buff = NULL;
 	if (BUFFER_SIZE >= INT_MAX)

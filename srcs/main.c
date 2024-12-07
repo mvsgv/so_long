@@ -6,7 +6,7 @@
 /*   By: mavissar <mavissar@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 15:30:13 by mavissar          #+#    #+#             */
-/*   Updated: 2024/12/06 19:38:39 by mavissar         ###   ########.fr       */
+/*   Updated: 2024/12/07 16:27:53 by mavissar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,16 +27,17 @@ int main(int argc, char **argv)
 			game.mlx_ptr = mlx_init();
 			link_content(&(game.content));
 			game.map = map_init(argv, &game);
-			printf("here\n");
-			if (game.map)
+			if (game.map != NULL)
 			{
 				img_setup(&game);
-				write(1, "dwq", 3);      
-				render_first(&game);       
+				render_first(&game);
+				//write(1, "dwq", 3);      
 			}
 			// else
 			//     ending(&game);
 	}
+	//print(&game);  
+	//mlx_loop(&game->mlx_ptr);
 	return (1);
 }
 

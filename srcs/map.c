@@ -144,14 +144,7 @@
 /* ************************************************************************** */
 
 #include "so_long.h"
-	// 1 loop qui utilise gnl + un int qui va tenir le compte
-	//	-> nb de lignes
-	// 1 loop sur la derniere ligne que renvoie gnl + un int qui tient le copte
-	// 		--> nb de char / lignes
-	
-	// les malloc
 
-	// la copie de la map dans char**
 static int	check_line_width(char *line, int *map_width, int y, t_game *game)
 {
 	int	x;
@@ -179,7 +172,6 @@ static int	check_line_width(char *line, int *map_width, int y, t_game *game)
 
 void	get_map(int fd, t_game *game)
 {
-	//char	**map;
 	int		i;
 	char	*line;
 	int		nb_lines;
@@ -210,7 +202,6 @@ void	get_map(int fd, t_game *game)
 	free(line);
 	game->height = y;
 	//int x = 0;
-	
 	game->map = (char **)malloc(sizeof(char *) * y);
 	if (!game->map)
 		ft_error("Erro\nMemory allocation failed\n");
@@ -222,68 +213,11 @@ void	get_map(int fd, t_game *game)
 			break ;
 		game->map[j] = line;
 		printf("%s", game->map[j]);
-		//free(line);
+		// free(line);
 		j++;
 	}
-	
 	j = 0;
-	//free(line);
-	//printf("%s", game->map[1]);
-
-	
-	//exit(0);
 }
-
-// char **lines;
-// lines = malloc(nb_lines);
-
-// j = 0
-// while (j < nb_lines) {
-// 	lines[j] = malloc(i);
-// }
-
-
-
-// 	char **map;
-
-// 	// 1 loop avec gnl pour avoir nb de ligne et nb de char/ligne
-
-// 	// 2 malloc du nombre de ligne sur map
-// 	// 3 malloc(nb de char) sur chaque map[i]
-
-// 	// 4 meme loop que dans 1 avec gnl, mais pour copier ce que gnl recupere 
-// 	return map;
-	
-// }
-
-// char	*get_map(int fd)
-// {
-// 	char	*line_map;
-// 	char	*buff;
-// 	int		char_count;
-// 	char	*tmp_buff;
-
-// 	line_map = ft_strdup("");
-// 	buff = ft_strdup("");
-// 	char_count = get_next_line(fd);
-// 	if (char_count > 0)
-// 	{
-// 		tmp_buff = buff;
-// 		while (char_count > 0)
-// 		{
-// 			buff = ft_strjoin(buff, line_map);
-// 			free(tmp_buff);
-// 			free(line_map);
-// 			line_map = ft_strdup("");
-// 			char_count = get_next_line(fd);
-// 			tmp_buff = buff;
-// 			//printf("begining : %s", tmp_buff);
-// 		}
-// 		return (buff);
-// 	}
-// 	ft_error("Error\nWrong lecture map\n");
-// 	return (NULL);
-// }
 
 void	*free_map(t_game *game)
 {
@@ -314,28 +248,12 @@ char	**parsing(int fd, t_game *game)
 	int		i;
 
 	i = 1;
-	// on load la map
 	get_map(fd, game);
-	// on check si on a bien nos elements | only 1 P | only 1 E | more collectible than 0 
 	content_checker(game);
-	
 	if (!(format_checker(game)))
 		return (free_map(game));
 	if (!(lines_checker(game->map[0], game->content.wall_s, game)))
 		return (free_map(game));
-	// erreur sur le check des murs 
-	// while (game->map[i] != NULL)
-	// {
-	// 	if (!(column_checker(game->map[i], game->content.wall_s, game)))
-	// 		return (free_map(game));
-	// 	else if (!(good_behavior_checker(game->map[i], &(game->content))))
-	// 		return (free_map(game));
-	// 	i++;
-	// }
-	// 
-	//printf("ici %d", game->height);
-	//printf("ici %d", game->width);
-
 	if (!good_behavior_checker(game))
 		errooor(game, "Arg intru");
 	if (!find_wall(game))

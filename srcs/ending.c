@@ -6,7 +6,7 @@
 /*   By: mavissar <mavissar@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 17:41:35 by mavissar          #+#    #+#             */
-/*   Updated: 2024/12/06 19:45:23 by mavissar         ###   ########.fr       */
+/*   Updated: 2024/12/07 16:01:36 by mavissar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,10 +40,12 @@ int     ending(t_game *game)
     int     i;
 
     i = 0;
-    if (game->map[i] != NULL)
+    if (game->map != NULL)
     {
         while (game->map[i] != NULL)
         {
+            if (i == game->height - 1)
+			    break;
             free(game->map[i]);
             i++;
         }

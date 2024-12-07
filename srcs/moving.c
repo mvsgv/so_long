@@ -6,7 +6,7 @@
 /*   By: mavissar <mavissar@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 18:27:49 by mavissar          #+#    #+#             */
-/*   Updated: 2024/12/05 11:31:39 by mavissar         ###   ########.fr       */
+/*   Updated: 2024/12/07 15:54:36 by mavissar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ void    move_left(t_game *game)
         {
             if (collected(game) == 0)
             {
+                printf("Felicitation vous avez gagne en : %d coup !\n",
+					game->count);
                 ending(game);
             }
         }
@@ -45,7 +47,7 @@ void    move_right(t_game *game)
 
     pos_x = game->pos.x / game->img.height;
     pos_y = game->pos.y / game->img.width;
-    if (game->map[pos_x][pos_y - 1] != game->content.wall_s)
+    if (game->map[pos_x][pos_y + 1] != game->content.wall_s)
     {
         if (!(game->map[pos_x][pos_y + 1] == game->content.exit_s))
         {
@@ -57,6 +59,8 @@ void    move_right(t_game *game)
         {
             if (collected(game) == 0)
             {
+                printf("Felicitation vous avez gagne en : %d coup !\n",
+					game->count);
                 ending(game);
             }
         }
@@ -81,6 +85,8 @@ void    move_down(t_game *game)
         {
             if (collected(game) == 0)
             {
+                printf("Felicitation vous avez gagne en : %d coup !\n",
+					game->count);
                 ending(game);
             }
         }
@@ -106,6 +112,8 @@ void    move_up(t_game *game)
         {
             if (collected(game) == 0)
             {
+                printf("Felicitation vous avez gagne en : %d coup !\n",
+					game->count);
                 ending(game);
             }
         }
